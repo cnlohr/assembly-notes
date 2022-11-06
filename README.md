@@ -86,28 +86,28 @@ https://drive.google.com/drive/folders/1WUkw5rC5yDKR2lT6nQkdDeGCpMPmpI3f?usp=sha
 
 ### References from the presentation:
 
-(1) https://en.wikipedia.org/wiki/RollerCoaster_Tycoon_(video_game)#/media/File:RollerCoaster_Tycoon_Screenshot.png Retrieved 2022-10-24
-(2) https://www.reddit.com/r/ProgrammerHumor/comments/ji8sx6/still_assembly_is_one_of_my_favourite_language/ Retrieved 2022-10-24
-(3) https://www.youtube.com/watch?v=eAhWIO1Ra6M (Published Jun 6, 2015)
-(4) https://hacks.mozilla.org/2013/12/gap-between-asm-js-and-native-performance-gets-even-narrower-with-float32-optimizations/ (Published Dec 20, 2013)
-(5) https://www.reddit.com/r/ProgrammerHumor/comments/6tifn2/the_holy_trinity_and_javascript/ (Published August 13 2017)
-(6) https://knowyourmeme.com/memes/ackchyually-actually-guy (Retrieved 2022-10-25)
-(7) https://www.youtube.com/watch?v=-E36UNXMjnU (2018-12-21)
-(8) https://www.youtube.com/watch?v=QM1iUe6IofM (2016-01-18)
-(9) https://www.youtube.com/watch?v=GKYCA3UsmrU  (Cut from original video uploaded Jun 11, 2015)
-(10) https://en.wikipedia.org/w/index.php?title=Red%E2%80%93black_tree&oldid=675908841 (2015-08-13)
-(11) https://www.youtube.com/watch?v=m4f4OzEyueg ( 2014-09-05)
-(12) https://github.com/WebAssembly/design/issues/796 (Retrieved 2022-10-29)
-(13) https://imgur.com/lZLyoaA (2017-11-09)
-(14) http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf (2016-11-01)
-(15) https://gist.github.com/cnlohr/e11d59f98c94f748683ba7ec80667d51 (2022-10-28)
-(16) https://www.youtube.com/watch?v=etdKnhwWtwA (2013-02-12)
-(17) https://luplab.cs.ucdavis.edu/2022/06/03/rvcodec-js.html (2022-06-03)
-(18) https://blog.pimaker.at/texts/rvc1/ (2021-08-25)
-(19) https://www.pinatafarm.com/memegenerator/4a771794-6d5a-42ef-a1c8-7744545233d8 (Retrieved 2022-11-04)
-(20) https://knowyourmeme.com/memes/surprised-pikachu (Retrieved 2022-11-04)
-(21) https://en.wikipedia.org/wiki/Amdahl%27s_law#/media/File:Optimizing-different-parts.svg  (Retrieved 2008-01-10)
-(22) https://azeria-labs.com/arm-data-types-and-registers-part-2/ (Retrieved 2022-11-04)
-(23) https://www.youtube.com/watch?v=wU2UoxLtIm8 (2021-02-09)
-(24) https://knowyourmeme.com/memes/salt-bae (Retrieved 2022-11-05)
-(25) https://github.com/cnlohr/esp32s2-cookbook (Retrieved 2022-11-06
+1) https://en.wikipedia.org/wiki/RollerCoaster_Tycoon_(video_game)#/media/File:RollerCoaster_Tycoon_Screenshot.png Retrieved 2022-10-24
+2) https://www.reddit.com/r/ProgrammerHumor/comments/ji8sx6/still_assembly_is_one_of_my_favourite_language/ Retrieved 2022-10-24
+3) https://www.youtube.com/watch?v=eAhWIO1Ra6M (Published Jun 6, 2015)
+4) https://hacks.mozilla.org/2013/12/gap-between-asm-js-and-native-performance-gets-even-narrower-with-float32-optimizations/ (Published Dec 20, 2013)
+5) https://www.reddit.com/r/ProgrammerHumor/comments/6tifn2/the_holy_trinity_and_javascript/ (Published August 13 2017)
+6) https://knowyourmeme.com/memes/ackchyually-actually-guy (Retrieved 2022-10-25)
+7) https://www.youtube.com/watch?v=-E36UNXMjnU (2018-12-21)
+8) https://www.youtube.com/watch?v=QM1iUe6IofM (2016-01-18)
+9) https://www.youtube.com/watch?v=GKYCA3UsmrU  (Cut from original video uploaded Jun 11, 2015)
+10) https://en.wikipedia.org/w/index.php?title=Red%E2%80%93black_tree&oldid=675908841 (2015-08-13)
+11) https://www.youtube.com/watch?v=m4f4OzEyueg ( 2014-09-05)
+12) https://github.com/WebAssembly/design/issues/796 (Retrieved 2022-10-29)
+13) https://imgur.com/lZLyoaA (2017-11-09)
+14) http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf (2016-11-01)
+15) https://gist.github.com/cnlohr/e11d59f98c94f748683ba7ec80667d51 (2022-10-28)
+16) https://www.youtube.com/watch?v=etdKnhwWtwA (2013-02-12)
+17) https://luplab.cs.ucdavis.edu/2022/06/03/rvcodec-js.html (2022-06-03)
+18) https://blog.pimaker.at/texts/rvc1/ (2021-08-25)
+19) https://www.pinatafarm.com/memegenerator/4a771794-6d5a-42ef-a1c8-7744545233d8 (Retrieved 2022-11-04)
+20) https://knowyourmeme.com/memes/surprised-pikachu (Retrieved 2022-11-04)
+21) https://en.wikipedia.org/wiki/Amdahl%27s_law#/media/File:Optimizing-different-parts.svg  (Retrieved 2008-01-10)
+22) https://azeria-labs.com/arm-data-types-and-registers-part-2/ (Retrieved 2022-11-04)
+23) https://www.youtube.com/watch?v=wU2UoxLtIm8 (2021-02-09)
+24) https://knowyourmeme.com/memes/salt-bae (Retrieved 2022-11-05)
+25) https://github.com/cnlohr/esp32s2-cookbook (Retrieved 2022-11-06
