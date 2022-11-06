@@ -4,8 +4,7 @@ My repo for notes on assembly lagnuage, inling, etc.
 
 ## Using Inline Assembly
 
-Webpages:
-
+Webpages (For inline assembly)
  * https://dmalcolm.fedorapeople.org/gcc/2015-08-31/rst-experiment/how-to-use-inline-assembly-language-in-c-code.html
  * https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#Clobbers-and-Scratch-Registers
  * https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
