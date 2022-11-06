@@ -4,7 +4,10 @@ My repo for notes on assembly lagnuage, inling, etc.
 
 ## Overall
 
+## Dedicated Assembly
 
+* https://github.com/AEFeinstein/Super-2023-Swadge-FW/blob/main/tools/sandbox_test/
+* Example linker script: https://github.com/AEFeinstein/Super-2023-Swadge-FW/blob/main/tools/bootload_reboot_stub/esp32_s2_stub.ld
 
 ## Using Inline Assembly
 
