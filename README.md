@@ -2,6 +2,10 @@
 
 My repo for notes on assembly lagnuage, inling, etc.
 
+## Overall
+
+
+
 ## Using Inline Assembly
 
 Webpages (For inline assembly)
@@ -73,3 +77,12 @@ strlen, but no loops (sort of)
 	return ret;
 
 ```
+
+
+
+## The presentation.
+
+(Link to youtube video will go here)
+
+### References from the presentation:
+
