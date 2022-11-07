@@ -50,7 +50,7 @@ asm [volatile] goto ( ``AssemblerTemplate``
 ```
 
 
-Example:
+Example (Xtensa LX7, ESP32S2, ESP32):
 ```c
 #define TURBO_SET_PIXEL(opxc, opy, colorVal ) \
 	asm volatile( "mul16u a4, %[width], %[y]\nadd a4, a4, %[px]\nadd a4, a4, %[opx]\ns8i %[val],a4, 0" \
@@ -62,11 +62,10 @@ Example:
 #define TURBO_SET_PIXEL_BOUNDS(opxc, opy, colorVal ) \
 	asm volatile( "bgeu %[opx], %[width], failthrough%=\nbgeu %[y], %[height], failthrough%=\nmul16u a4, %[width], %[y]\nadd a4, a4, %[px]\nadd a4, a4, %[opx]\ns8i %[val],a4, 0\nfailthrough%=:\nnop" \
 		: : [opx]"a"(opxc),[y]"a"(opy),[px]"a"(dispPx),[val]"a"(colorVal),[width]"a"(dispWidth),[height]"a"(dispHeight) : "a4" );
+```
 
-x86_64 assembly
-
-strlen, but no loops (sort of)
-
+x86_64 assembly: strlen, but no loops (sort of)
+```c
 	unsigned long long ret = 0;
 	asm volatile("\n\
 		xor %%rax, %%rax\n\
@@ -78,9 +77,7 @@ strlen, but no loops (sort of)
 		mov %%rcx, %[ret]\n\
 		" : [ret]"=r"(ret) : [strin]"r"(str) : "rdi","rcx","rax" );
 	return ret;
-
 ```
-
 
 
 ## The presentation.
