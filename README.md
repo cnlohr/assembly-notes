@@ -49,6 +49,16 @@ asm [volatile] goto ( ``AssemblerTemplate``
                       : ``GotoLabels``)
 ```
 
+Example: Get current # of cycles (processor cycles) counter on ESP32, ESP8266:
+
+```c
+static inline uint32_t getCycleCount() {
+   uint32_t ccount;
+   asm volatile("rsr %0,ccount":"=a" (ccount));
+   return ccount;
+}
+```
+
 
 Example (Xtensa LX7, ESP32S2, ESP32):
 ```c
@@ -79,6 +89,14 @@ x86_64 assembly: strlen, but no loops (sort of)
 	return ret;
 ```
 
+
+Side-note:  you can put raw opcodes in your code, in case the compiler doesn't know about some processor quirk.
+
+```c
+static void CUSTOMLOG( const char * c ) {
+   asm volatile( "csrrw x0, 0x137, %0\n.long 0xff100073" : : "r" (c));
+}
+```
 
 ## The presentation.
 
