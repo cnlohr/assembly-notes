@@ -8,6 +8,7 @@ My repo for notes on assembly lagnuage, inling, etc.
 
 * https://github.com/AEFeinstein/Super-2023-Swadge-FW/blob/main/tools/sandbox_test/
 * Example linker script: https://github.com/AEFeinstein/Super-2023-Swadge-FW/blob/main/tools/bootload_reboot_stub/esp32_s2_stub.ld
+* Manual on special commands for dedicated (gas) assembly: http://www.math.utah.edu/docs/info/as_7.html
 
 ## Using Inline Assembly
 
