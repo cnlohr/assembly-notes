@@ -99,6 +99,22 @@ static void CUSTOMLOG( const char * c ) {
 }
 ```
 
+## Random Tricks:
+
+* Super-fast integer absolute value
+
+```c
+static inline ABS(x) { if( x < 0 ) return -x; else return x; } // .725 seconds
+
+static inline ABS(x) { int mask = mask = x>>31; return (mask + x)^mask; } // .727 seconds
+
+#define ABS(x) abs(x) // .673 seconds
+
+static inline ABS( int x ) { asm volatile("\nmov %[x], %%ebx\nneg %[x]\ncmovl %%ebx,%[x]\n" : : [x]"r"(x) : "ebx" ); return x; } // .554 seconds!!!
+```
+(-O4, gcc 9.4.0, x86_64)
+
+
 ## The presentation.
 
 https://drive.google.com/drive/folders/1WUkw5rC5yDKR2lT6nQkdDeGCpMPmpI3f?usp=sharing
