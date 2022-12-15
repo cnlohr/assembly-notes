@@ -104,15 +104,19 @@ static void CUSTOMLOG( const char * c ) {
 * Super-fast integer absolute value
 
 ```c
-static inline ABS(x) { if( x < 0 ) return -x; else return x; } // .725 seconds
+// .725 seconds
+static inline ABS(x) { if( x < 0 ) return -x; else return x; }
 
-static inline ABS(x) { int mask = mask = x>>31; return (mask + x)^mask; } // .727 seconds
+// .727 seconds
+static inline ABS(x) { int mask = mask = x>>31; return (mask + x)^mask; }
 
-#define ABS(x) abs(x) // .673 seconds
+// .673 seconds
+#define ABS(x) abs(x) 
 
-static inline ABS( int x ) { asm volatile("\nmov %[x], %%ebx\nneg %[x]\ncmovl %%ebx,%[x]\n" : : [x]"r"(x) : "ebx" ); return x; } // .554 seconds!!!
+// .554 seconds!!!
+static inline ABS( int x ) { asm volatile("\nmov %[x], %%ebx\nneg %[x]\ncmovl %%ebx,%[x]\n" : : [x]"r"(x) : "ebx" ); return x; }
 ```
-(-O4, gcc 9.4.0, x86_64)
+(-O4, gcc 9.4.0, x86_64, Run times are my day 15 Advent of Code 2022 Challenge, Part 1, which uses a lot of abs's)
 
 
 ## The presentation.
