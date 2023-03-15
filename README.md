@@ -50,6 +50,8 @@ asm [volatile] goto ( ``AssemblerTemplate``
                       : ``GotoLabels``)
 ```
 
+**Major note: If you modify memory inside your assembly, you, many times will need to add `"memory"` to your clobber list.**
+
 Example: Get current # of cycles (processor cycles) counter on ESP32, ESP8266:
 
 ```c
