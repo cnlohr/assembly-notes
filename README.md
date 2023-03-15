@@ -61,6 +61,8 @@ static inline void spin_unlock(spinlock_t *lock)
 }
 ```
 
+## More examples.
+
 Example: Get current # of cycles (processor cycles) counter on ESP32, ESP8266:
 
 ```c
