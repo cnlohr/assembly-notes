@@ -50,7 +50,16 @@ asm [volatile] goto ( ``AssemblerTemplate``
                       : ``GotoLabels``)
 ```
 
-**Major note: If you modify memory inside your assembly, you, many times will need to add `"memory"` to your clobber list.**
+## `"memory"` Clobber.
+If you modify memory inside your assembly, you, many times will need to add `"memory"` to your clobber list.** There are two major uses, one is that if it's possible for code after your code to read memory that has been altered by your code, you need to specify `memory` in your clobber so that GCC isn't using cached (into a register or something) versions of the memory that your code has modified. **And** the other use is to guarantee that any memory accesses have been accomplished before you execute further code.  I.e. the following code:
+
+```
+static inline void spin_unlock(spinlock_t *lock)
+{
+   __asm__ __volatile__(""::: "memory");
+   lock->lock = 0;
+}
+```
 
 Example: Get current # of cycles (processor cycles) counter on ESP32, ESP8266:
 
