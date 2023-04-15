@@ -114,7 +114,7 @@ static void CUSTOMLOG( const char * c ) {
 
 ## Relative Jump Labels
 
-You can use relative jump labels.
+You can use relative jump labels.  You can jump forward with a number and `f` and back with a number and `b`.
 
 ```c
 asm volatile(
