@@ -141,6 +141,15 @@ asm volatile(
 
 ## Random Tricks:
 
+* Prevent the compiler from emitting dumb l32r's, i.e. Tell the compiler "Please, do not load another literal, please instead compute `c1` from `c0` - thanks, @duk-37
+
+```c
+	uint32_t c0 = 0xF0F0F0F0;
+	asm("":"+r"(c0)); // Force the compiler to not do an l32r.
+	uint32_t c1 = c0 >> 4;
+	// c1 = 0x0f0f0f0f, now, but without extra l32r
+```
+
 * Super-fast integer absolute value
 
 ```c
