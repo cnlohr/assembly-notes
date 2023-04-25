@@ -25,9 +25,11 @@ Tools:
    * Make GCC produce in-line assembly: Add `-Wa,-a,-ad`
    * Make GCC produce in-line map file: Add `-Wl,-Map,test.debug.map`
 
-Constraints:
+Constraints: (Note 'a' could be 'r' for first 2)
  * `=a` write-only  -- note `&` is a different type of write-only constraint
+ * `=&a` write-and-early-clobber.  Without this, input registers are allowed to be assigned to the same register as your output.
  * `+a` read-and-write
+ * Note: If you must have the inputs be two separate registers, you must add the `&` constraint to them as well!
  * `a` read-only
  * `g` pointer
  * `r` register
@@ -182,8 +184,8 @@ This does an integer multiply on systems taht don't have a multiply instruction.
 		slli %[big], %[big], 1\n\
 		bnez %[small], 1b\n\
 	" :
-		[ret]"+r"(ret) : // Tricky: Compiler is buggy, need a +r constraint.
-		[big]"r"(big_num), [small]"r"(small_num) :
+		[ret]"=&r"(ret) : // Tricky: Compiler is buggy, need a +r constraint.
+		[big]"&r"(big_num), [small]"&r"(small_num) :
 		"t0" );
 ```
 
