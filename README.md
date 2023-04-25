@@ -30,6 +30,7 @@ Constraints: (Note 'a' could be 'r' for first 2)
  * `=&a` write-and-early-clobber.  Without this, input registers are allowed to be assigned to the same register as your output.
  * `+a` read-and-write
  * Note: If you must have read-and-write inputs be two separate registers, you must make them `+&`.
+ * NOTE: If you use `r`, as input, and modify them, you ought set them as outputs with the `+&` constraint.
  * `a` read-onlyye
  * `g` pointer
  * `r` register
