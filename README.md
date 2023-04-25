@@ -184,9 +184,9 @@ This does an integer multiply on systems taht don't have a multiply instruction.
 		slli %[big], %[big], 1\n\
 		bnez %[small], 1b\n\
 	" :
-		[ret]"=&r"(ret) : // Tricky: Compiler is buggy, need a +r constraint.
-		[big]"&r"(big_num), [small]"&r"(small_num) :
+		[ret]"=&r"(ret) , [big]"+&r"(big_num), [small]"+&r"(small_num) : :
 		"t0" );
+	return ret;
 ```
 
 
