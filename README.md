@@ -26,10 +26,9 @@ Tools:
    * Make GCC produce in-line map file: Add `-Wl,-Map,test.debug.map`
 
 Constraint Modifiers:
- * `=` write-only -- note `&` is a different type of write-only constraint
- * `+` read-and-write
+ * `=` write-only -- value is **undefined** at start
+ * `+` read-and-write -- value is **well-defined** at start
  * `&` early-clobber. Applies to both `=` and `+` Without this, input registers are allowed to be assigned to the same register as your output. See below for when this may be important.
-   * NOTE: If you must have read-and-write inputs be two separate registers, you must make them `+&`.
  * NOTE: Do not modify InputOperands! It will break things. By telling the compiler something is an input operand you are saying it **will not** be written to.
  * `g` pointer
  * `r` register
