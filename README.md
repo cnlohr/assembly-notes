@@ -29,7 +29,7 @@ Constraint Modifiers:
  * `=` write-only -- initial value may **only** be written to -- **undefined** at the start of the inline assembly
    * NOTE: this only applies to the value passed to the inline assembly expression; after you write to it yourself you are free to read from it at will, of course
  * `+` read-and-write -- initial value may be both read **and** written to -- **well-defined** at the start of the inline assembly
- * `&` early-clobber. Applies to both `=` and `+` Without this, input registers are allowed to be assigned to the same register as your output.
+ * `&` early-clobber. Applies to both `=` and `+` Without this, input registers are allowed to be assigned to the same register as your output. You will want to use this if you write to an output parameter **before** reading from a separate input parameter.
  * NOTE: Do not modify InputOperands! It will break things. By telling the compiler something is an input operand you are saying it **will not** be written to.
  * `g` pointer
  * `r` register
