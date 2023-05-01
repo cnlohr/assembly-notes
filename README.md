@@ -26,16 +26,16 @@ Tools:
    * Make GCC produce in-line map file: Add `-Wl,-Map,test.debug.map`
 
 Constraint Modifiers:
- * `=` write-only -- value is **undefined** at start
- * `+` read-and-write -- value is **well-defined** at start
- * `&` early-clobber. Applies to both `=` and `+` Without this, input registers are allowed to be assigned to the same register as your output. See below for when this may be important.
+ * `=` write-only -- initial value may **only** be written to -- **undefined** at the start of the inline assembly
+   * NOTE: this only applies to the value passed to the inline assembly expression; after you write to it yourself you are free to read from it at will, of course
+ * `+` read-and-write -- initial value may be both read **and** written to -- **well-defined** at the start of the inline assembly
+ * `&` early-clobber. Applies to both `=` and `+` Without this, input registers are allowed to be assigned to the same register as your output.
  * NOTE: Do not modify InputOperands! It will break things. By telling the compiler something is an input operand you are saying it **will not** be written to.
  * `g` pointer
  * `r` register
  * `a` architecture-specific, see https://gcc.gnu.org/onlinedocs/gcc/Machine-Constraints.html for more information
 
-Demonstration: read-after-write can lead to undesired behavior
-
+Demonstration: read-after-write can lead to undesired behavior without `&`
 ```c
 static __attribute__((noinline)) uint32_t incorrect_1(uint32_t a) {
     uint32_t ret = 0; // NOTE: it would technically be legal to keep this value uninitlalized
