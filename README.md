@@ -25,16 +25,60 @@ Tools:
    * Make GCC produce in-line assembly: Add `-Wa,-a,-ad`
    * Make GCC produce in-line map file: Add `-Wl,-Map,test.debug.map`
 
-Constraints: (Note 'a' could be 'r' for first 2)
- * `=a` write-only  -- note `&` is a different type of write-only constraint
- * `=&a` write-and-early-clobber.  Without this, input registers are allowed to be assigned to the same register as your output.
- * `+a` read-and-write
- * NOTE: If you must have read-and-write inputs be two separate registers, you must make them `+&`.
- * NOTE: If you use `r`, as input, and modify them, you ought set them as outputs with the `+&` constraint.
- * NOTE: (In summary) Do not modify InputOperands.
- * `a` read-onlyye
+Constraint Modifiers:
+ * `=` write-only -- initial value may **only** be written to -- **undefined** at the start of the inline assembly
+   * NOTE: this only applies to the value passed to the inline assembly expression; after you write to it yourself you are free to read from it at will, of course
+ * `+` read-and-write -- initial value may be both read **and** written to -- **well-defined** at the start of the inline assembly
+ * `&` early-clobber. Applies to both `=` and `+` Without this, input registers are allowed to be assigned to the same register as your output. You will want to use this if you write to an output parameter **before** reading from a separate input parameter.
+ * NOTE: Do not modify InputOperands! It will break things. By telling the compiler something is an input operand you are saying it **will not** be written to.
  * `g` pointer
  * `r` register
+ * `a` architecture-specific, see https://gcc.gnu.org/onlinedocs/gcc/Machine-Constraints.html for more information
+
+Demonstration: read-after-write can lead to undesired behavior without `&`
+```c
+static __attribute__((noinline)) uint32_t incorrect_1(uint32_t a) {
+    uint32_t ret = 0; // NOTE: it would technically be legal to keep this value uninitlalized
+    asm volatile(
+        "mov $10, %0\n"
+        "add %1, %0"// add eax, eax -> bad!
+        :"=r"(ret):"r"(a));
+    return ret;
+}
+
+static __attribute__((noinline)) uint32_t correct_1(uint32_t a) {
+    uint32_t ret = 0;
+    asm volatile(
+        "mov $10, %0\n"
+        "add %1, %0" // add eax, edx -> fine
+        :"=&r"(ret):"r"(a));
+    return ret;
+}
+
+int main() {
+    incorrect_1(0);
+    correct_1(0);
+}
+```
+
+Demonstration: _never_ write to input constraints!
+```c
+uint32_t incorrect_2() {
+    uint32_t ret = 0;
+    asm volatile(
+        "mov $10, %0\n"
+        ::"r"(ret));
+    return ret; // returns 10
+}
+
+uint32_t incorrect_3() {
+    uint32_t ret = 0;
+    asm volatile(
+        "mov $10, %0\n"
+        ::"r"(ret));
+    return ret + 1; // returns 1!
+}
+```
 
 Labels in inline assembly: `%=` will create a unique thing for this section, so `skip_pix%=` jumps to `skip_pix%=:`
 
