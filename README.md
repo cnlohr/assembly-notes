@@ -235,6 +235,21 @@ This does an integer multiply on systems taht don't have a multiply instruction.
 	return ret;
 ```
 
+### Cursed binary generation at runtime when you use constants.
+
+Use the "i" type, so you can convert your number into part of an opcode.
+
+Example here: https://gist.github.com/cleverca22/79143cb23a50d572b9d527c9ea479492#file-vpu-support-native-h
+
+```c
+static inline int inner(int a) {
+	asm volatile (".long (%[rega] << 4) | 42" ::[rega]"i"(4));
+}
+
+void outer() {
+	inner(42);
+}
+```
 
 ## The presentation.
 
