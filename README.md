@@ -251,6 +251,39 @@ void outer() {
 }
 ```
 
+## Inline assembly for x86 SSE2
+
+Just a quick example showing how to load some ints, do a gather load, and save some data off.
+
+```c
+#include <stdint.h>
+#include <stdio.h>
+#include <immintrin.h>
+
+int main()
+{
+	__attribute__((aligned(256))) const float in_vals[8] = { 0.5, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0 }; // Array to load data from.
+	__attribute__((aligned(256))) int         in_load_map[8] = { 1, 3, 5, 7, 1, 3, 5, 7 }; // Pointers to where to load data from.
+
+	// Must be -1 so that it reads into the values.
+	__attribute__((aligned(256))) int         in_mask[8] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+
+	// Initialize with junk.
+	__attribute__((aligned(512))) float stored[16] = { 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, };
+
+	__m256 output_in_m256;
+	asm volatile( "\
+vmovdqu %[in_mask],%%ymm0\n\
+vmovdqu %[in_load_map], %%ymm1\n\
+vgatherdps %%ymm0, 0(%[in_vals],%%ymm1,4), %[output_in_m256]\n\
+vmovaps %[output_in_m256], %[stored]\n\
+" : [output_in_m256] "+x" (output_in_m256), [stored] "=m" (stored): [in_mask] "m" (in_mask), [in_load_map]  "m" (in_load_map), [in_vals] "r" (in_vals) : "ymm0", "ymm1", "ymm2" );
+	printf( "STORED: %f\n", stored[2] );
+}
+```
+
+
+
 ## The presentation.
 
 https://drive.google.com/drive/folders/1WUkw5rC5yDKR2lT6nQkdDeGCpMPmpI3f?usp=sharing
