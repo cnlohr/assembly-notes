@@ -226,6 +226,19 @@ register int *p2 asm ("r1") = …;
 register int *result asm ("r0");
 asm ("sysint" : "=r" (result) : "0" (p1), "r" (p2));
 ```
+NEW versions of GCC allow for hard register constraints for register pinning
+
+https://gcc.gnu.org/onlinedocs/gcc/Hard-Register-Constraints.html
+
+Example:
+```c
+int x;
+int y __attribute__ ((vector_size (16)));
+…
+asm ("some instructions"
+     : "={r4}" (x)
+     : "{f5}" (42.0), "{v6}" (y));
+```
 
 ### Random example
 
