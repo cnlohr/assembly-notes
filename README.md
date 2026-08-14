@@ -215,6 +215,18 @@ static inline ABS( int x ) { asm volatile("\nmov %[x], %%ebx\nneg %[x]\ncmovl %%
 ```
 (-O4, gcc 9.4.0, x86_64, Run times are my day 15 Advent of Code 2022 Challenge, Part 1, which uses a lot of abs's)
 
+### Pinning local values to registers
+
+from https://gcc.gnu.org/onlinedocs/gcc/Local-Register-Variables.html
+
+They provide this example:
+```c
+register int *p1 asm ("r0") = …;
+register int *p2 asm ("r1") = …;
+register int *result asm ("r0");
+asm ("sysint" : "=r" (result) : "0" (p1), "r" (p2));
+```
+
 ### Random example
 
 This does an integer multiply on systems taht don't have a multiply instruction.
