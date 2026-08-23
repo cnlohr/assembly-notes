@@ -309,6 +309,10 @@ vmovaps %[output_in_m256], %[stored]\n\
 ```
 
 
+## Linker Script Notes
+
+https://blog.thea.codes/the-most-thoroughly-commented-linker-script/
+
 
 ## The presentation.
 
